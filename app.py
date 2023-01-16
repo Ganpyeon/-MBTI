@@ -36,7 +36,6 @@ img_result_dic = {
     '10': 'http://spartacodingclub.shop/static/images/rtans/SpartaIcon10.png'
 }
 
-
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -82,10 +81,14 @@ def answer_post():
     answer_receive = request.form['answer_give']
     name_receive = request.form['name_give']
 
-    users_list = list(db.users.find({}, {'_id': False}))
+    # users_list = list(db.users.find({}, {'_id': False}))
     # # result_list = users_list.get('result_list')
     result_list = db.users.find_one({'name': name_receive}, {'_id': False}, {'result': False}, {'image': False},
                                     {'name': False})
+    # result_list = {'result_list' : [0 ,1, 2, 3, 1, ...]}
+
+    result_list = result_list['result_list']
+
     # for user in users_list:
     if answer_receive == 1:
         result_list[0] += 1;
@@ -128,7 +131,9 @@ def result_update():
     #     if name_receive == user.get('name'):
     #         img_url = users_list.get('image')
     # 다음과 같이 for 문을 쓰는 것 대신에 find_one을 사용함.
-    img_url = db.users.find_one({'name': name_receive}, {'_id': False}, {'result': False}, {'result_list': False}, {'name': False})
+    img_url = db.users.find_one({'name': name_receive}, {'_id': False}, {'result': False}, {'result_list': False},
+                                {'name': False})
+    img_url = img_url['image']
     return jsonify({'img_url': img_url})
 
 
@@ -140,7 +145,10 @@ def result_get():
     # for user in users_list:
     #     if name_receive == user.get('name'):
     #         img_url = users_list.get('image')
-    img_url = db.users.find_one({'name': name_receive}, {'_id': False}, {'result': False}, {'result_list': False}, {'name': False})
+    img_url = db.users.find_one({'name': name_receive}, {'_id': False}, {'result': False}, {'result_list': False},
+                                {'name': False})
+    img_url = img_url['image']
+
     return jsonify({'img_url': img_url})
 
 
