@@ -19,7 +19,7 @@ import requests
 
 # MongoDB client, db 변수 선언
 client = MongoClient(
-    'mongodb+srv://test:1234@cluster0.vfu4hiz.mongodb.net/Cluster0?retryWrites=true&w=majority',
+    'mongodb+srv://test:sparta@cluster0.idr3zpp.mongodb.net/Cluster0?retryWrites=true&w=majority',
     tlsCAFile=ca)
 db = client.dbsparta
 
@@ -120,13 +120,13 @@ def answer_post():
 ## 결과물 보여주기
 @app.route("/api/result", methods=["POST"])
 def result_update():
-    ## result 의 값을 0에서  최댓값 (result_high) 으로 바꾸기
+    ## result 의 값을 0에서  최댓값 (result_list[max]) 으로 바꾸기
     name_receive = request.form['name_give']
     users_list = list(db.users.find({}, {'_id': False}))
     result_list = users_list.get('result_list')
 
     for user in users_list:
-        if (name_receive == user.get('name')):
+        if name_receive == user.get('name'):
             db.users.update_one({'name': name_receive}, {'$set': {'result': result_list[max]}})
 
     ## image Url 도 이에 따라서 바꿔주기
@@ -134,7 +134,7 @@ def result_update():
     db.users.update_one({'name': name_receive}, {'$set': {'image': url_list}})
 
     for user in users_list:
-        if (name_receive == user.get('name')):
+        if name_receive == user.get('name'):
             img_url = users_list.get('image')
 
     return jsonify({'img_url': img_url})
@@ -146,7 +146,7 @@ def result_get():
     name_receive = request.form['name_give']
     users_list = list(db.users.find({}, {'_id': False}))
     for user in users_list:
-        if (name_receive == user.get('name')):
+        if name_receive == user.get('name'):
             img_url = users_list.get('image')
 
     return jsonify({'img_url': img_url})
