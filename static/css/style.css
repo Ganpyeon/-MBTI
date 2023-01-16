@@ -1,10 +1,11 @@
 body {
   font-family: "Noto Sans KR", sans-serif;
-  background-color: #f8f9fa;
+  background-color: #e9ecef;
 }
 
 .header {
-  background-color: #e9ecef;
+  position: relative;
+  background-color: #fff;
   width: 100%;
   height: 100%;
   display: flex;
@@ -13,21 +14,37 @@ body {
   padding: 20px 40px;
 }
 
-.header > img {
+.header > a > img {
   width: 100px;
   height: 32px;
 }
 
-.header > ol {
-  width: 250px;
+.header > ul {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  margin-left: 32%;
 }
 
-.header > ol > li {
+.header > ul > li {
   cursor: pointer;
+}
+
+/* .header > ul > li:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 30px;
+  left: 50%;
+  border-bottom: 3px solid #495057;
+} */
+
+.header > ul > li > a {
+  text-decoration: none;
+  color: #000;
 }
 
 .banner {
@@ -40,7 +57,7 @@ body {
 }
 
 .banner > span {
-  color: white;
+  color: #fff;
   font-size: 48px;
 }
 
@@ -54,4 +71,32 @@ body {
 
 .form {
   width: 50%;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  height: 100vh;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 100px 0px 0px 0px;
+}
+
+.result > img {
+  margin: 100px 0px;
+}
+
+.result > .mbti {
+  font-size: 3rem;
+}
+
+.result > .mbti_des {
+  font-size: 1.25rem;
+}
+
+.result > button {
+  width: 100%;
 }
