@@ -1,62 +1,101 @@
 body * {
-    font-family: 'Black Han Sans', sans-serif;
-
+  font-family: "Black Han Sans", sans-serif;
+  background-color: #e9ecef;
 }
 
 .header {
-    background-color: #e9ecef;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-
-    padding: 20px 40px;
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 20px 40px;
 }
 
-.header > img {
-    width: 100px;
-    height: 32px;
+.header > a > img {
+  width: 100px;
+  height: 32px;
 }
 
-.header > ol {
-    width: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-left: 32%;
+.header > ul {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.header > ol > li {
-    cursor: pointer;
+.header > ul > li {
+  cursor: pointer;
+}
+
+.header > ul > li > a {
+  text-decoration: none;
+  color: #000;
 }
 
 .banner {
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://s3.ap-northeast-2.amazonaws.com/blog.spartacodingclub.kr/sparta-supporters.png");
-    background-position: center 90%;
-    background-size: auto;
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("https://s3.ap-northeast-2.amazonaws.com/blog.spartacodingclub.kr/sparta-supporters.png");
+  background-position: center 90%;
+  background-size: auto;
 
-    width: 100%;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .banner > span {
-    color: white;
-    font-size: 80px;
+  color: white;
+  font-size: 80px;
 }
 
 .container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 15px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
 }
 
 .form {
-    width: 50%;
-    margin-top: 50px;
+  width: 50%;
+  margin-top: 50px;
 }
 
+.result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  height: 100vh;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 100px 0px 0px 0px;
+}
+
+.result > img {
+  margin: 100px 0px;
+}
+
+.result > .mbti {
+  font-size: 3rem;
+}
+
+.result > .mbti_des {
+  font-size: 1.25rem;
+}
+
+.result > button {
+  width: 100%;
+}
