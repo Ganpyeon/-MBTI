@@ -47,30 +47,13 @@
       </ul>
       <div></div>
     </div>
-    <div class="banner">
-      <span>나의 항해 선원 유형은 무엇일까요?</span>
-    </div>
     <div class="container">
-      <div class="form">
-        <div class="input-group input-group-lg">
-          <span class="input-group-text" id="addon-wrapping">이름</span>
-          <input
-            type="text"
-            id="username"
-            class="form-control"
-            placeholder="Username"
-            aria-label="Username"
-            aria-describedby="addon-wrapping"
-            onkeypress="handleKeyUpUserName(this)"
-          />
-          <button
-            type="button"
-            class="btn btn-success"
-            onclick="handleClickStartBtn()"
-          >
-            시작하기
-          </button>
-        </div>
+      <div class="result" id="result">
+        <span class="mbti" id="mbti">당신은 [아가 르탄이] 에요 !</span>
+        <img alt="mbti_img" id="mbti_img" src="http://spartacodingclub.shop/static/images/rtans/SpartaIcon06.png" />
+        <span class="mbti_des" id="mbti_des">당신은 아기와 같이 챙김을 받으면 좋은 유형 이시군요 도움을 받으면서 성장을 빠르게 하실수 있는분이군요! 
+        </span>
+        <button type="button" class="btn btn-primary">저장하기</button>
       </div>
     </div>
   </body>

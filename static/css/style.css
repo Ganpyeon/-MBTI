@@ -1,0 +1,174 @@
+body {
+  font-family: "Black Han Sans", sans-serif;
+  background-color: #e9ecef;
+}
+
+.header {
+  position: relative;
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.header > a > img {
+  width: 100px;
+  height: 32px;
+}
+
+.header > ul {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header > ul > li {
+  cursor: pointer;
+}
+
+.header > ul > li > a {
+  text-decoration: none;
+  color: #000;
+}
+
+.banner {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("https://s3.ap-northeast-2.amazonaws.com/blog.spartacodingclub.kr/sparta-supporters.png");
+  background-position: center 90%;
+  background-size: auto;
+
+  width: 100%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner > span {
+  color: white;
+  font-size: 80px;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.form {
+  width: 50%;
+  margin-top: 50px;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  height: 100vh;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 100px 20px 0px 20px;
+}
+
+.result > img {
+  /* margin: 100px 0px; */
+  width: 300px;
+}
+
+.result > .mbti {
+  font-size: 3rem;
+}
+
+.result > .mbti_des {
+  font-size: 1.25rem;
+}
+
+.result > button {
+  width: 100%;
+}
+
+/* ============================= */
+
+.qna_form {
+  margin-top: 50px;
+}
+
+.qnaBox {
+  width: 100%;
+  background-color: pink;
+  text-align: center;
+  border-radius: 20px;
+  font-size: 35px;
+}
+
+.answerBox {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.answerList {
+  width: 100%;
+  background-color: pink;
+  border-radius: 20px;
+  border: white;
+  margin-top: 20px;
+  padding: 20px;
+  font-size: 30px;
+}
+
+.answerList:hover {
+  background-color: white;
+}
+
+.status {
+  height: 20px;
+  width: 80%;
+  background-color: pink;
+  border-radius: 20px;
+}
+
+.statusBar {
+  height: 100%;
+  border-radius: 20px;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#efc5ca+0,d24b5a+50,ba2737+51,f18e99+100;Red+Gloss+%233 */
+  background: #efc5ca; /* Old browsers */
+  background: -moz-linear-gradient(
+    top,
+    #efc5ca 0%,
+    #d24b5a 50%,
+    #ba2737 51%,
+    #f18e99 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    #efc5ca 0%,
+    #d24b5a 50%,
+    #ba2737 51%,
+    #f18e99 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #efc5ca 0%,
+    #d24b5a 50%,
+    #ba2737 51%,
+    #f18e99 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efc5ca', endColorstr='#f18e99',GradientType=0 ); /* IE6-9 */
+}

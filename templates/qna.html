@@ -25,9 +25,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/static/js/index.js" type="module"></script>
     <script src="/static/js/mainPage.js" type="text/javascript"></script>
-    <script src="/static/js/qna.js" type="text/javascript"></script>
     <script src="/static/js/resultPage.js" type="text/javascript"></script>
     <title>나의 항해 MBTI는?</title>
   </head>
@@ -47,31 +45,16 @@
       </ul>
       <div></div>
     </div>
-    <div class="banner">
-      <span>나의 항해 선원 유형은 무엇일까요?</span>
-    </div>
-    <div class="container">
-      <div class="form">
-        <div class="input-group input-group-lg">
-          <span class="input-group-text" id="addon-wrapping">이름</span>
-          <input
-            type="text"
-            id="username"
-            class="form-control"
-            placeholder="Username"
-            aria-label="Username"
-            aria-describedby="addon-wrapping"
-            onkeypress="handleKeyUpUserName(this)"
-          />
-          <button
-            type="button"
-            class="btn btn-success"
-            onclick="handleClickStartBtn()"
-          >
-            시작하기
-          </button>
-        </div>
+    <div class="qna_form">
+      <div class="status mx-auto my-3">
+        <div class="statusBar"></div>
+      </div>
+      <div class="container">
+        <div class="qnaBox my-5 py-5"></div>
+        <div class="answerBox"></div>
       </div>
     </div>
+    <script src="/static/js/index.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/js/qna.js" type="text/javascript" charset="utf-8"></script>
   </body>
 </html>
