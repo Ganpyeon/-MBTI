@@ -30,12 +30,6 @@ img_result_dic = {
     '8': 'http://spartacodingclub.shop/static/images/rtans/SpartaIcon09.png',
     '9': 'http://spartacodingclub.shop/static/images/rtans/SpartaIcon10.png'
 }
-## API
-# users_list = list(db.users.find({}, {'_id': False}))
-# print(users_list)
-
-
-
 
 @app.route('/')
 def home():
@@ -111,21 +105,16 @@ def result_update():
     name_receive = request.form['name_give']
 
     ## result Update
-
-    # result_list = db.users.find_one({'name': name_receive}, {'_id': False}, {'result': False}, {'image': False},
-    #                                 {'name': False})
-    # result_list = result_list['result_list']
     user_list = db.users.find_one({'name': name_receive}, {'_id': False})
     result_list = user_list.get('result_list')
     result_index = result_list.index(max(result_list))
     db.users.update_one({'name': name_receive}, {'$set': {'result': result_index}})
 
     ## image Url Update
-    url_list = img_result_dic['result_new']
+    url_list = img_result_dic[str(result_index)]
     db.users.update_one({'name': name_receive}, {'$set': {'image': url_list}})
     user_list = db.users.find_one({'name': name_receive}, {'_id': False})
     img_url = user_list.get('image')
-    img_url = img_url['image']
     return jsonify({'img_url': img_url})
 
 
@@ -133,11 +122,11 @@ def result_update():
 @app.route("/api/re_result", methods=["POST"])
 def result_get():
     name_receive = request.form['name_give']
-    img_url = db.users.find_one({'name': name_receive}, {'_id': False}, {'result': False}, {'result_list': False},
-                                {'name': False})
-
-    img_url = img_url['image']
+    user_list = db.users.find_one({'name': name_receive}, {'_id': False})
+    img_url = user_list.get('image')
     return jsonify({'img_url': img_url})
+
 ## Local 5000
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
+
