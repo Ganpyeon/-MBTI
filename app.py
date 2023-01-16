@@ -168,7 +168,7 @@ def answer_post():
             result_list[9] += randint(3, 5)
             db.users.update_one({'name': name_receive}, {'$set': {'result_list': result_list}})
 
-    return jsonify({'msg': '닉네임 등록 완료!'})
+    return jsonify({'msg': '결과 검사 중입니다!'})
 
 ## 결과물 보여주기
 @app.route("/api/result", methods=["POST"])
