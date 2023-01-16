@@ -81,10 +81,8 @@ def answer_post():
     # 숫자 하나만 넘겨주는 경우
     answer_receive = int(request.form['answer_give'])
     name_receive = request.form['name_give']
-    result_list = db.users.find_one({'name': name_receive}, {'_id': False}, {'result': False}, {'image': False},
-                                    {'name': False})
-
-    result_list = result_list['result_list']
+    user_list = db.users.find_one({'name': name_receive}, {'_id': False})
+    result_list = user_list.get('result_list')
 
     if answer_receive == 1:
         result_list[0] += 1
