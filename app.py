@@ -2,6 +2,10 @@
 # flask import 하는 부분
 from flask import Flask, render_template, request, jsonify
 
+# 난수발생 import
+from random import *
+
+
 app = Flask(__name__)
 
 # pymongo import 하는 부분
@@ -17,6 +21,8 @@ client = MongoClient(
     'mongodb+srv://test:sparta@cluster0.idr3zpp.mongodb.net/Cluster0?retryWrites=true&w=majority',
     tlsCAFile=ca)
 db = client.dbsparta
+
+
 ## img_dic init
 img_result_dic = {
     '0': 'http://spartacodingclub.shop/static/images/rtans/SpartaIcon01.png',
@@ -72,36 +78,101 @@ def name_init():
 ## 결과값을 질문지 하나하나마다 할때 post API 실행
 @app.route("/api/answer", methods=["POST"])
 def answer_post():
-    # 숫자 하나만 넘겨주는 경우
-    answer_receive = int(request.form['answer_give'])
+    # # 숫자 하나만 넘겨주는 경우
+    # answer_receive = int(request.form['answer_give'])
+    # name_receive = request.form['name_give']
+    # user_list = db.users.find_one({'name': name_receive}, {'_id': False})
+    # result_list = user_list.get('result_list')
+    #
+    # if answer_receive == 1:
+    #    result_list[0] += randint(3, 5)
+    #             result_list[1] += randint(3, 5)
+    #             result_list[2] += randint(3, 5)
+    #             result_list[3] += randint(1, 3)
+    #             result_list[4] += randint(1, 3)
+    #             result_list[5] += randint(1, 3)
+    #             result_list[6] += randint(0, 1)
+    #             result_list[7] += randint(0, 1)
+    #             result_list[8] += randint(0, 1)
+    #             result_list[9] += randint(0, 1)
+    #     db.users.update_one({'name': name_receive}, {'$set': {'result_list': result_list}})
+    #
+    # if answer_receive == 2:
+    #             result_list[0] += randint(1, 2)
+    #             result_list[1] += randint(1, 2)
+    #             result_list[2] += randint(1, 2)
+    #             result_list[3] += randint(3, 5)
+    #             result_list[4] += randint(3, 5)
+    #             result_list[5] += randint(3, 5)
+    #             result_list[6] += randint(1, 2)
+    #             result_list[7] += randint(1, 2)
+    #             result_list[8] += randint(1, 2)
+    #             result_list[9] += randint(1, 2)
+    #              db.users.update_one({'name': name_receive}, {'$set': {'result_list': result_list}})
+    #
+    # if answer_receive == 3:
+    # result_list[0] += randint(0, 1)
+    #             result_list[1] += randint(0, 1)
+    #             result_list[2] += randint(0, 1)
+    #             result_list[3] += randint(1, 3)
+    #             result_list[4] += randint(1, 3)
+    #             result_list[5] += randint(1, 3)
+    #             result_list[6] += randint(1, 3)
+    #             result_list[7] += randint(3, 5)
+    #             result_list[8] += randint(3, 5)
+    #             result_list[9] += randint(3, 5)
+    #     db.users.update_one({'name': name_receive}, {'$set': {'result_list': result_list}})
+
+    ## 숫자 리스트를 넘겨주는 경우
+    answer_receive = request.form['answer_give']
     name_receive = request.form['name_give']
     user_list = db.users.find_one({'name': name_receive}, {'_id': False})
     result_list = user_list.get('result_list')
+    for answer in answer_receive:
+        if answer == 1:
+            result_list[0] += randint(3, 5)
+            result_list[1] += randint(3, 5)
+            result_list[2] += randint(3, 5)
+            result_list[3] += randint(1, 3)
+            result_list[4] += randint(1, 3)
+            result_list[5] += randint(1, 3)
+            result_list[6] += randint(0, 1)
+            result_list[7] += randint(0, 1)
+            result_list[8] += randint(0, 1)
+            result_list[9] += randint(0, 1)
+            db.users.update_one({'name': name_receive}, {'$set': {'result_list': result_list}})
 
-    if answer_receive == 1:
-        result_list[0] += 1
-        result_list[3] += 1
-        result_list[5] += 1
-        db.users.update_one({'name': name_receive}, {'$set': {'result_list': result_list}})
+        if answer == 2:
+            result_list[0] += randint(1, 2)
+            result_list[1] += randint(1, 2)
+            result_list[2] += randint(1, 2)
+            result_list[3] += randint(3, 5)
+            result_list[4] += randint(3, 5)
+            result_list[5] += randint(3, 5)
+            result_list[6] += randint(1, 2)
+            result_list[7] += randint(1, 2)
+            result_list[8] += randint(1, 2)
+            result_list[9] += randint(1, 2)
+            db.users.update_one({'name': name_receive}, {'$set': {'result_list': result_list}})
 
-    if answer_receive == 2:
-        result_list[4] += 1
-        result_list[6] += 1
-        result_list[7] += 1
-        db.users.update_one({'name': name_receive}, {'$set': {'result_list': result_list}})
+        if answer == 3:
+            result_list[0] += randint(0, 1)
+            result_list[1] += randint(0, 1)
+            result_list[2] += randint(0, 1)
+            result_list[3] += randint(1, 3)
+            result_list[4] += randint(1, 3)
+            result_list[5] += randint(1, 3)
+            result_list[6] += randint(1, 3)
+            result_list[7] += randint(3, 5)
+            result_list[8] += randint(3, 5)
+            result_list[9] += randint(3, 5)
+            db.users.update_one({'name': name_receive}, {'$set': {'result_list': result_list}})
 
-    if answer_receive == 3:
-        result_list[1] += 1
-        result_list[2] += 1
-        result_list[8] += 1
-        result_list[9] += 1
-        db.users.update_one({'name': name_receive}, {'$set': {'result_list': result_list}})
-
+    return jsonify({'msg': '닉네임 등록 완료!'})
 
 ## 결과물 보여주기
 @app.route("/api/result", methods=["POST"])
 def result_update():
-    ## result 의 값을 0에서  최댓값 (result_list[max]) 으로 바꾸기
     name_receive = request.form['name_give']
 
     ## result Update
@@ -113,6 +184,8 @@ def result_update():
     ## image Url Update
     url_list = img_result_dic[str(result_index)]
     db.users.update_one({'name': name_receive}, {'$set': {'image': url_list}})
+
+    ## Imgae url return
     user_list = db.users.find_one({'name': name_receive}, {'_id': False})
     img_url = user_list.get('image')
     return jsonify({'img_url': img_url})
