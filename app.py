@@ -31,6 +31,12 @@ img_result_dic = {
     '9': 'http://spartacodingclub.shop/static/images/rtans/SpartaIcon10.png'
 }
 ## API
+# users_list = list(db.users.find({}, {'_id': False}))
+# print(users_list)
+
+
+
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -73,7 +79,7 @@ def name_init():
 @app.route("/api/answer", methods=["POST"])
 def answer_post():
     # 숫자 하나만 넘겨주는 경우
-    answer_receive = request.form['answer_give']
+    answer_receive = int(request.form['answer_give'])
     name_receive = request.form['name_give']
     result_list = db.users.find_one({'name': name_receive}, {'_id': False}, {'result': False}, {'image': False},
                                     {'name': False})
@@ -107,17 +113,20 @@ def result_update():
     name_receive = request.form['name_give']
 
     ## result Update
-    result_list = db.users.find_one({'name': name_receive}, {'_id': False}, {'result': False}, {'image': False},
-                                    {'name': False})
-    result_list = result_list['result_list']
+
+    # result_list = db.users.find_one({'name': name_receive}, {'_id': False}, {'result': False}, {'image': False},
+    #                                 {'name': False})
+    # result_list = result_list['result_list']
+    user_list = db.users.find_one({'name': name_receive}, {'_id': False})
+    result_list = user_list.get('result_list')
     result_index = result_list.index(max(result_list))
     db.users.update_one({'name': name_receive}, {'$set': {'result': result_index}})
 
     ## image Url Update
     url_list = img_result_dic['result_new']
     db.users.update_one({'name': name_receive}, {'$set': {'image': url_list}})
-    img_url = db.users.find_one({'name': name_receive}, {'_id': False}, {'result': False}, {'result_list': False},
-                                {'name': False})
+    user_list = db.users.find_one({'name': name_receive}, {'_id': False})
+    img_url = user_list.get('image')
     img_url = img_url['image']
     return jsonify({'img_url': img_url})
 
