@@ -1,4 +1,4 @@
-body * {
+body {
   font-family: "Black Han Sans", sans-serif;
   background-color: #e9ecef;
 }
@@ -81,11 +81,12 @@ body * {
   height: 100vh;
   background-color: #fff;
   border-radius: 20px;
-  padding: 100px 0px 0px 0px;
+  padding: 100px 20px 0px 20px;
 }
 
 .result > img {
-  margin: 100px 0px;
+  /* margin: 100px 0px; */
+  width: 300px;
 }
 
 .result > .mbti {
@@ -98,4 +99,76 @@ body * {
 
 .result > button {
   width: 100%;
+}
+
+/* ============================= */
+
+.qna_form {
+  margin-top: 50px;
+}
+
+.qnaBox {
+  width: 100%;
+  background-color: pink;
+  text-align: center;
+  border-radius: 20px;
+  font-size: 35px;
+}
+
+.answerBox {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.answerList {
+  width: 100%;
+  background-color: pink;
+  border-radius: 20px;
+  border: white;
+  margin-top: 20px;
+  padding: 20px;
+  font-size: 30px;
+}
+
+.answerList:hover {
+  background-color: white;
+}
+
+.status {
+  height: 20px;
+  width: 80%;
+  background-color: pink;
+  border-radius: 20px;
+}
+
+.statusBar {
+  height: 100%;
+  border-radius: 20px;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#efc5ca+0,d24b5a+50,ba2737+51,f18e99+100;Red+Gloss+%233 */
+  background: #efc5ca; /* Old browsers */
+  background: -moz-linear-gradient(
+    top,
+    #efc5ca 0%,
+    #d24b5a 50%,
+    #ba2737 51%,
+    #f18e99 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    #efc5ca 0%,
+    #d24b5a 50%,
+    #ba2737 51%,
+    #f18e99 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #efc5ca 0%,
+    #d24b5a 50%,
+    #ba2737 51%,
+    #f18e99 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#efc5ca', endColorstr='#f18e99',GradientType=0 ); /* IE6-9 */
 }
