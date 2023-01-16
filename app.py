@@ -88,28 +88,28 @@ def answer_post():
         if (name_receive == user.get('name')):
             if (answer_receive == 1):
                 result_list[0] += 1;
-                result_list[1] += 1;
-                result_list[2] += 1;
+                result_list[3] += 1;
+                result_list[5] += 1;
                 # db.users.update_one({'name': name_receive}, {'$set': {'result_list': result_list}})
                 db.users.update_one({'name': name_receive}, {'$set': {'result_list[0]': result_list[0]}})
-                db.users.update_one({'name': name_receive}, {'$set': {'result_list[1]': result_list[1]}})
-                db.users.update_one({'name': name_receive}, {'$set': {'result_list[2]': result_list[2]}})
+                db.users.update_one({'name': name_receive}, {'$set': {'result_list[3]': result_list[3]}})
+                db.users.update_one({'name': name_receive}, {'$set': {'result_list[5]': result_list[5]}})
 
             if (answer_receive == 2):
-                result_list[3] += 1;
                 result_list[4] += 1;
-                result_list[5] += 1;
                 result_list[6] += 1;
-                db.users.update_one({'name': name_receive}, {'$set': {'result_list[3]': result_list[3]}})
+                result_list[7] += 1;
                 db.users.update_one({'name': name_receive}, {'$set': {'result_list[4]': result_list[4]}})
-                db.users.update_one({'name': name_receive}, {'$set': {'result_list[5]': result_list[5]}})
                 db.users.update_one({'name': name_receive}, {'$set': {'result_list[6]': result_list[6]}})
+                db.users.update_one({'name': name_receive}, {'$set': {'result_list[7]': result_list[7]}})
 
             if (answer_receive == 3):
-                result_list[7] += 1;
+                result_list[1] += 1;
+                result_list[2] += 1;
                 result_list[8] += 1;
                 result_list[9] += 1;
-                db.users.update_one({'name': name_receive}, {'$set': {'result_list[7]': result_list[7]}})
+                db.users.update_one({'name': name_receive}, {'$set': {'result_list[1]': result_list[1]}})
+                db.users.update_one({'name': name_receive}, {'$set': {'result_list[2]': result_list[2]}})
                 db.users.update_one({'name': name_receive}, {'$set': {'result_list[8]': result_list[8]}})
                 db.users.update_one({'name': name_receive}, {'$set': {'result_list[9]': result_list[9]}})
 
@@ -125,17 +125,13 @@ def result_update():
     users_list = list(db.users.find({}, {'_id': False}))
     result_list = users_list.get('result_list')
 
-    tmp = 0;
-    for result in result_list:
-        if(tmp >= result):
-            tmp = result
-
-    result_high = tmp
-    db.users.update_one({'name': name_receive}, {'$set': {'result': result_high}})
+    for user in users_list:
+        if (name_receive == user.get('name')):
+            db.users.update_one({'name': name_receive}, {'$set': {'result': result_list[max]}})
 
     ## image Url 도 이에 따라서 바꿔주기
-    url_update = img_result_dic[result_high]
-    db.users.update_one({'name': name_receive}, {'$set': {'image': url_update}})
+    url_list = img_result_dic[result_list[max]]
+    db.users.update_one({'name': name_receive}, {'$set': {'image': url_list}})
 
     for user in users_list:
         if (name_receive == user.get('name')):
